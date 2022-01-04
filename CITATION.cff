@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Hempel
+  given-names: Benjamin-Florian
+  orcid:  https://orcid.org/0000-0002-1998-4033
+title: "PAssT"
+version: 1.0.0
+doi: -
+date-released: 2022-01-12
+url: "https://github.com/benjaminhempel/PAssT"
