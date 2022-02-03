@@ -9,3 +9,39 @@ version: 1.0.0
 doi: -
 date-released: 2022-01-12
 url: "https://github.com/benjaminhempel/PAssT"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: Hempel
+    given-names: Benjamin-Florian
+    orcid: https://orcid.org/0000-0002-1998-4033
+  - family-names: Damm
+    given-names: Maik
+    orcid: https://orcid.org/0000-0003-0810-3699
+    - family-names: Petras
+    given-names: Daniel
+    orcid: https://orcid.org/0000-0002-6561-3022
+    - family-names: Kazandjian
+    given-names: Taline D.
+    orcid: https://orcid.org/0000-0002-5383-0505
+    - family-names: Szentiks
+    given-names: Claudia A.
+    orcid: https://orcid.org/0000-0003-3812-8141
+    - family-names: Fritsch
+    given-names: Guido
+    - family-names: Nebrich
+    given-names: Grit
+     - family-names: Casewell
+    given-names: Nicholas R.
+    orcid: https://orcid.org/0000-0002-8035-4719
+     - family-names: Oliver
+    given-names: Klein
+    orcid: https://orcid.org/0000-0001-7984-7607
+     - family-names: Süssmuth
+    given-names: Roderich D.
+    orcid: https://orcid.org/0000-0001-7027-2069
+  doi: 10.1101/2022.01.31.478453
+  journal: biorxiv
+  month: 1
+  title: Spatial Venomics - Cobra Venom System Reveals Spatial Differentiation of Snake Toxins by Mass Spectrometry Imaging
+  year: 2022
