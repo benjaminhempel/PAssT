@@ -5,13 +5,17 @@ Peptide (mass) Assignment Tool (PAssT) allow to identify mass features from MALD
 Here, we introduce a *step-by-step* introduction to our **PAssT", allowing to follow the script.
 
 ### Data Upload
-First, load the peptide reference library and MALDI-MSI mass feature list. Please keep in mind to substract a **hydrogen adduct ion** from your MALDI-MSI mass feature list.
+First, load the peptide reference library and MALDI-MSI mass feature list.
 
 ```{csv files}
-Maldi_mass <- read.csv("C:/Users/oklein/Desktop/MassAssign/Maldi_mass.csv")
-ESI_mass <- read.csv("C:/Users/oklein/Desktop/MassAssign/ESI_mass.csv")
+Maldi_mass <- read.csv("C:/~/Maldi_mass.csv")
+ESI_mass <- read.csv("C:/~/ESI_mass.csv")
 ```
+Please keep in mind to substract a **hydrogen adduct ion** from your MALDI-MSI mass feature list.
 
+```{hydrogen adduct}
+ESI_mass$m.z <- ESI_mass$m.z-1.0078
+```
 
 
 ## How to contribute
