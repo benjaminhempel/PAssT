@@ -76,7 +76,7 @@ writeData(wb, "MH + .calc. - peptide", table(acc), rowNames = F)
 saveWorkbook(wb, "C:/Downloads/PAssT", overwrite = T)
 ```
 
-## How to contribute
+## How to Contribute
 to allow an uncomplicated and quick identification of MALDI mass features
 PAssT has been developed to allow for a qualitative and fast identification of MALDI-MSI mass features and is now publicily available for the scientific community. Your help is very valuable to make it better for everyone. The most effective way in regards to bugs or contributions is to open an issue on the github issue tracker. Github allows you to classify your issues into bug report, feature request or feedback to the authors.
 
