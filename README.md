@@ -11,11 +11,12 @@ First, load the peptide reference library and MALDI-MSI mass feature list.
 Maldi_mass <- read.csv("C:/~/Maldi_mass.csv")
 ESI_mass <- read.csv("C:/~/ESI_mass.csv")
 ```
-Please keep in mind to substract a **hydrogen adduct ion** from your MALDI-MSI mass feature list.
+**Note** that the output of the SCiLS Lab csv file represent <span style="color:red">**M+H<sup>+</sup>**</span> mass values and therefore have to substract the hydrogen adduct ion!
 
 ```{hydrogen adduct}
 ESI_mass$m.z <- ESI_mass$m.z-1.0078
 ```
-
+### Mass Feature Loop
+After data upload, run the mass feature loop
 
 ## How to contribute
