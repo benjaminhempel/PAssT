@@ -13,7 +13,7 @@ library(openxlsx)
 ```
 
 ### Data Upload
-Next, load the peptide reference library and MALDI-MSI mass feature list.
+Next, load the peptide reference library (ESI_Mass) and MSI mass feature list (Maldi_mass).
 
 ```{csv files}
 Maldi_mass <- read.csv("C:/~/Maldi_mass.csv")
