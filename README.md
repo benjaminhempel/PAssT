@@ -30,8 +30,8 @@ After data upload, run the mass feature loop:
 1. Construct empty vectors with minimal distances for all mass features (*dis2feature*) and respectives masses with minimal distances (*list.mh*)
 2. Loop for calculation of distances for all mass features against each others and setting some parameters:
     
-    a) Set a high pseudo distance if NA
-    b) Remove distance of values >= 1
+    a) Set a high pseudo distance if NA<br />
+    b) Remove distance of values >= 1<br />
     c) Select mass features with highest -10logP score
     
 ```{mass feature loop}
@@ -77,7 +77,7 @@ saveWorkbook(wb, "C:/Downloads/PAssT", overwrite = T)
 ```
 
 ## How to Contribute
-to allow an uncomplicated and quick identification of MALDI mass features
+To allow an uncomplicated and quick identification of MALDI mass features
 PAssT has been developed to allow for a qualitative and fast identification of MALDI-MSI mass features and is now publicily available for the scientific community. Your help is very valuable to make it better for everyone. The most effective way in regards to bugs or contributions is to open an issue on the github issue tracker. Github allows you to classify your issues into bug report, feature request or feedback to the authors.
 
    + Check out to see what can be improved.
