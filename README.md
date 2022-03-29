@@ -16,10 +16,10 @@ library(openxlsx)
 Next, load the peptide reference library (ESI_Mass) and MSI mass feature list (Maldi_mass).
 
 ```{csv files}
-Maldi_mass <- read.csv("C:/~/Maldi_mass.csv", sep = ";")
+MALDI_mass <- read.csv("C:/~/MALDI_mass.csv", sep = ";")
 ESI_mass <- read.csv("C:/~/ESI_mass.csv", sep = ";")
 ```
-**Note** that the output of the SCiLS Lab csv file represent <span style="color:red">**[M+H]<sup>+</sup>**</span> mass values and therefore have to substract the hydrogen adduct ion!
+**Note** Output of the SCiLS Lab csv file represent <span style="color:red">**[M+H]<sup>+</sup>**</span> mass values and therefore have to substract the hydrogen adduct ion!
 
 ```{hydrogen adduct}
 ESI_mass$m.z <- ESI_mass$m.z-1.0078
@@ -38,7 +38,7 @@ After data upload, run the mass feature loop:
 dis2Maldi_mass <- c()
 list.m <- c()
 
-for (i in Maldi_mass$m.z){
+for (i in MALDI_mass$m.z){
 
   diff <- abs(ESI_mass$Mass - i)
   diff[which(is.na(diff))] <- 999999
@@ -71,7 +71,7 @@ acc <- unlist(lapply(as.character(list.m$Accession), function(x) unlist(strsplit
 Finally, save **PAssT** output as an excel work book in the folder **MassAssignment** on the desktop.
 
 ```{save workbook}
-wb <-createWorkbook(creator = "BFH" ,title = "PeptideASSignmentTool")
+wb <-createWorkbook(creator = "BFH" ,title = "PeptideAssignmentTool")
 addWorksheet(wb, "Full_Peptide_Library")
 writeData(wb, "Full_Peptide_Library", list.m, rowNames = F)
 saveWorkbook(wb, "~/PAssT_LIbrary.xlsx", overwrite = T)
