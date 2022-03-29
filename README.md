@@ -5,7 +5,7 @@ Peptide (mass) Assignment Tool (PAssT) allow to identify mass features from MALD
 Here, we introduce a *step-by-step* introduction to our **PAssT**, allowing to follow the script.
 
 ### Installation
-First, packages will be installed automatically when libaries will be loaded.
+First, packages will be installed automatically when libraries will be loaded.
 
 ```{library}
 library(dplyr)
