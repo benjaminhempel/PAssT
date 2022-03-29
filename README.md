@@ -86,3 +86,9 @@ PAssT has been developed to allow for a qualitative and fast identification of M
 
 ## Citation
 BF. Hempel, M. Damm, D. Petras, TD. Kazandjian, NR. Casewell, CA. Szentiks, G. Fritsch, G. Nebrich, NR. Casewell, O. Klein, RD. Süssmuth  “Spatial Venomics – Cobra Venom System Reveals Spatial Differentiation of Snake Toxins by Mass Spectrometry Imaging” biorxiv 2022, https://doi.org/10.1101/2022.01.31.478453.
+
+## Update
+
+### PAssT-v1.0.1
+   + Small bug fixes to ensure correct match process
+   + Update README.md file
