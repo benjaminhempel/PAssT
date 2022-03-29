@@ -5,10 +5,10 @@ Peptide (mass) Assignment Tool (PAssT) allow to identify mass features from MALD
 Here, we introduce a *step-by-step* introduction to our **PAssT**, allowing to follow the script.
 
 ### Installation
-First, we have to install and load the libaries to allow run the R script.
+First, packages will be installed automatically when libaries will be loaded.
 
 ```{library}
-install.packages(openxlsx)
+library(dplyr)
 library(openxlsx)
 ```
 
@@ -16,8 +16,8 @@ library(openxlsx)
 Next, load the peptide reference library (ESI_Mass) and MSI mass feature list (Maldi_mass).
 
 ```{csv files}
-Maldi_mass <- read.csv("C:/~/Maldi_mass.csv")
-ESI_mass <- read.csv("C:/~/ESI_mass.csv")
+Maldi_mass <- read.csv("C:/~/Maldi_mass.csv", sep = ";")
+ESI_mass <- read.csv("C:/~/ESI_mass.csv", sep = ";")
 ```
 **Note** that the output of the SCiLS Lab csv file represent <span style="color:red">**[M+H]<sup>+</sup>**</span> mass values and therefore have to substract the hydrogen adduct ion!
 
@@ -35,19 +35,22 @@ After data upload, run the mass feature loop:
     c) Select mass features with highest -10logP score
     
 ```{mass feature loop}
-dis2feature <- c()
-list.mh <- c()
+dis2Maldi_mass <- c()
+list.m <- c()
 
-for (i in features){
+for (i in Maldi_mass$m.z){
 
-  diff <- abs(ref$Mass - i)
+  diff <- abs(ESI_mass$Mass - i)
   diff[which(is.na(diff))] <- 999999
+  
   if(min(diff) >= 1.0) next
-  dis2feature <- c(dis2feature, min(diff))
-  sub <- ref[which(diff == min(diff)),]
-  sub <- cbind(MALDI.mass = rep(i,nrow(sub)), sub)
+  dis2Maldi_mass <- c(dis2Maldi_mass, min(diff))
+  
+  sub <- ESI_mass[which(diff == min(diff)),]
+  sub <- cbind(MALDI_mass = rep(i,nrow(sub)), sub)
   sub <- sub[which(sub$X.10lgP == max(sub$X.10lgP)),]
-  list.mh <- as.data.frame(rbind(list.mh, sub))
+  
+  list.m <- as.data.frame(rbind(list.m, sub))
 }
 ```
 
@@ -55,25 +58,23 @@ for (i in features){
 Further, remove of duplicates, add distances, and count entry accessions in the data frame (*list.mh*)
 
 ```{data processing}
-list.mh <- list.mh[!duplicated(list.mh),]
+dist <- round(abs(list.m$MALDI_mass-list.m$Mass), digits = 4)
+list.m <- as.data.frame(cbind(Distance = dist, list.m))
 
-dist <- round(abs(list.mh[,1]-list.mh[,4]), digits = 4)
-list.mh <- as.data.frame(cbind(Distance = dist, list.mh))
+list.m <- list.m[order(list.m[,'Mass'],list.m[,"Distance"]),]
+list.m <- list.m[!duplicated(list.m$Mass),]
 
-acc <- unlist(lapply(as.character(list.mh$Accession), function(x) unlist(strsplit(x,":"))))
+acc <- unlist(lapply(as.character(list.m$Accession), function(x) unlist(strsplit(x,":"))))
 ```
 
 ### Data Download
 Finally, save **PAssT** output as an excel work book in the folder **MassAssignment** on the desktop.
 
 ```{save workbook}
-wb <-createWorkbook()
-addWorksheet(wb, "MH + .calc.")
-addWorksheet(wb, "MH + .calc. - peptide")
-writeData(wb, "MH + .calc.", list.mh, rowNames = F)
-
-writeData(wb, "MH + .calc. - peptide", table(acc), rowNames = F)
-saveWorkbook(wb, "C:/Downloads/PAssT", overwrite = T)
+wb <-createWorkbook(creator = "BFH" ,title = "PeptideASSignmentTool")
+addWorksheet(wb, "Full_Peptide_Library")
+writeData(wb, "Full_Peptide_Library", list.m, rowNames = F)
+saveWorkbook(wb, "~/PAssT_LIbrary.xlsx", overwrite = T)
 ```
 
 ## How to Contribute
